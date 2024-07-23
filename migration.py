@@ -29,9 +29,6 @@ vx = vecs.create_client(DB_CONNECTION)
 images = vx.get_or_create_collection(name="images", dimension=128)
 
 def insert_image_feature_vector():
-    #extrahera url 
-    #extrahera featurevector 
-    #inserta filepath tsm med featurevector i vecs
     for _, _, filenames in os.walk("C:\\Users\\astri\\summer24\\FaceMatch\\test_bilder"):
         for filename in filenames: 
             if filename.endswith(".png") or filename.endswith(".jpg"):
@@ -53,19 +50,9 @@ def insert_image_feature_vector():
                         print("success")
                     except Exception as e:
                         print(f"Failed to upsert records due to {e}")
-
                     
-
-                    
-
-#res = supabase.storage.from_('images').list()
 #upload_image_to_storage()
 insert_image_feature_vector()
-
-#if upsert_response:
-    #print("Records upserted successfully.")
-#else:
-    #print("Failed to upsert records.")
 
 index_response = images.create_index()
 
@@ -81,5 +68,4 @@ except Exception as e:
 #     filters ={"image_url": {"$eq": 2012}},
 # )
 
-images.delete(ids = ["vec0", "vec1"])
 vx.disconnect()
