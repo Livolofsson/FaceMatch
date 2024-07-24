@@ -1,5 +1,5 @@
 deepface==0.0.89
 streamlit==1.35.0
 supabase==2.5.1
-python-dotnev==1.0.1
+python-dotenv==1.0.1
 vecs==0.4.3
