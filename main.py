@@ -47,7 +47,6 @@ if upload_file is not None:
             response2 = supabase.storage.from_('images').get_public_url(f"{similar_images[2]}")
         
             if response and response1 and response2:
-                st.markdown("The best match was following image:")
                 col1, col2, col3 = st.columns(3)
 
                 with col1:
@@ -58,10 +57,7 @@ if upload_file is not None:
                     st.image(response2, width=200)
 
                 #st.image([response, response1, response2],width=200)
-                st.markdown("If you want to download the images, then click on the following buttons:")
-                st.link_button("Download image 1", response)
-                st.link_button("Download image 2", response1)
-                st.link_button("Download image 3", response2)   
+                st.markdown("Right click on an image to download it")  
         except Exception as e:
             print(e)    
 else:
