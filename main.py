@@ -2,9 +2,7 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 from supabase import create_client
-from dotenv import load_dotenv
 import vecs 
-import os
 from deepface import DeepFace
 
 url = st.secrets["SUPABASE_URL"]
