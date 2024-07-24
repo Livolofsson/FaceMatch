@@ -7,12 +7,11 @@ import vecs
 import os
 from deepface import DeepFace
 import time
+import requests
 
 from io import BytesIO
 from dotenv import load_dotenv
 load_dotenv()
-
-
 
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
@@ -67,9 +66,9 @@ if upload_file is not None:
 
             #st.image([response, response1, response2],width=200)
             st.markdown("If you want to download the images, then click on the following URL link:")
-            st.download_button("Download some text", response)
-            st.download_button("Download some text", response1)
-            st.download_button("Download some text", response2)
+            st.link_button("Download image 1", response)
+            st.link_button("Download image 2", response1)
+            st.link_button("Download image 3", response2)
             
 else:
     st.write("Make sure your image is in JPG/PNG format.")
