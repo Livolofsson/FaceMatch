@@ -6,21 +6,15 @@ from dotenv import load_dotenv
 import vecs 
 import os
 from deepface import DeepFace
-import time
-import requests
 
-from io import BytesIO
-from dotenv import load_dotenv
-load_dotenv()
-
-url = os.getenv("SUPABASE_URL")
-key = os.getenv("SUPABASE_KEY")
+url = st.secrets["SUPABASE_URL"]
+key = st.secrets["SUPABASE_KEY"]
 supabase = create_client(url, key)
-db_user = os.getenv("db_user")
-db_password = os.getenv("db_password")
-db_host = os.getenv("db_host")
-db_port = os.getenv("db_port")
-db_name = os.getenv("db_name")
+db_user = st.secrets["db_user"]
+db_password = st.secrets["db_password"]
+db_host = st.secrets["db_host"]
+db_port = st.secrets["db_port"]
+db_name = st.secrets["db_name"]
 
 DB_CONNECTION = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 vx = vecs.create_client(DB_CONNECTION)
@@ -65,11 +59,9 @@ if upload_file is not None:
                 st.image(response2, width=200)
 
             #st.image([response, response1, response2],width=200)
-            st.markdown("If you want to download the images, then click on the following URL link:")
+            st.markdown("If you want to download the images, then click on the following buttons:")
             st.link_button("Download image 1", response)
             st.link_button("Download image 2", response1)
-            st.link_button("Download image 3", response2)
-            
+            st.link_button("Download image 3", response2)          
 else:
     st.write("Make sure your image is in JPG/PNG format.")
-
