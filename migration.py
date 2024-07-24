@@ -62,10 +62,7 @@ try:
 except Exception as e:
     print("Failed to create index.")
 
-# images.query(
-#     data=[0.4, 0.5, 0.6],
-#     limit=1,
-#     filters ={"image_url": {"$eq": 2012}},
-# )
 
 vx.disconnect()
+
+print(os.name)
