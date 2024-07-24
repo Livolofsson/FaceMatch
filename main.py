@@ -28,12 +28,11 @@ def load_image(img):
     image = np.array(im)
     return image
 
-upload_file = st.file_uploader(label="Upload image", type=['jpg', 'png'])
+upload_file = st.file_uploader(label="Upload image", type=['jpg', 'png', 'webp'])
 
 if upload_file is not None:
     img = load_image(upload_file)
     st.image(img)
-    st.markdown("Image Uploaded Successfully")
 
     with st.spinner("Finding matches..."):
         try:
@@ -60,5 +59,3 @@ if upload_file is not None:
                 st.markdown("Right click on an image to download it")  
         except Exception as e:
             print(e)    
-else:
-    st.write("Make sure your image is in JPG/PNG format.")
