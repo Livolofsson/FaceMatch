@@ -36,30 +36,33 @@ if upload_file is not None:
     st.markdown("Image Uploaded Successfully")
 
     with st.spinner("Finding matches..."):
-        represent = DeepFace.represent(img,model_name="Facenet", enforce_detection=False)
-        dicti = represent[0]
-        result = dicti.get("embedding")
+        try:
+            represent = DeepFace.represent(img,model_name="Facenet", enforce_detection=False)
+            dicti = represent[0]
+            result = dicti.get("embedding")
 
-        similar_images = images.query(data=result, limit=3)
-        response = supabase.storage.from_('images').get_public_url(f"{similar_images[0]}")
-        response1 = supabase.storage.from_('images').get_public_url(f"{similar_images[1]}")
-        response2 = supabase.storage.from_('images').get_public_url(f"{similar_images[2]}")
-       
-        if response and response1 and response2:
-            st.markdown("The best match was following image:")
-            col1, col2, col3 = st.columns(3)
+            similar_images = images.query(data=result, limit=3)
+            response = supabase.storage.from_('images').get_public_url(f"{similar_images[0]}")
+            response1 = supabase.storage.from_('images').get_public_url(f"{similar_images[1]}")
+            response2 = supabase.storage.from_('images').get_public_url(f"{similar_images[2]}")
+        
+            if response and response1 and response2:
+                st.markdown("The best match was following image:")
+                col1, col2, col3 = st.columns(3)
 
-            with col1:
-                st.image(response, width=200)
-            with col2:
-                st.image(response1, width=200)
-            with col3:
-                st.image(response2, width=200)
+                with col1:
+                    st.image(response, width=200)
+                with col2:
+                    st.image(response1, width=200)
+                with col3:
+                    st.image(response2, width=200)
 
-            #st.image([response, response1, response2],width=200)
-            st.markdown("If you want to download the images, then click on the following buttons:")
-            st.link_button("Download image 1", response)
-            st.link_button("Download image 2", response1)
-            st.link_button("Download image 3", response2)          
+                #st.image([response, response1, response2],width=200)
+                st.markdown("If you want to download the images, then click on the following buttons:")
+                st.link_button("Download image 1", response)
+                st.link_button("Download image 2", response1)
+                st.link_button("Download image 3", response2)   
+        except Exception as e:
+            print(e)    
 else:
     st.write("Make sure your image is in JPG/PNG format.")
