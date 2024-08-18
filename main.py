@@ -39,11 +39,14 @@ if upload_file is not None:
             represent = DeepFace.represent(img,model_name="Facenet", enforce_detection=False)
             dicti = represent[0]
             result = dicti.get("embedding")
-
-            similar_images = images.query(data=result, limit=3)
-            response = supabase.storage.from_('images').get_public_url(f"{similar_images[0]}")
-            response1 = supabase.storage.from_('images').get_public_url(f"{similar_images[1]}")
-            response2 = supabase.storage.from_('images').get_public_url(f"{similar_images[2]}")
+            
+            similar_images = images.query(data=result, limit=3, include_metadata=True, include_value=True)
+            tuple_0 = similar_images[0]
+            tuple_1 = similar_images[1]
+            tuple_2 = similar_images[2]
+            response = tuple_0[2].get("image_url")
+            response1 = tuple_1[2].get("image_url")
+            response2 = tuple_2[2].get("image_url")
         
             if response and response1 and response2:
                 col1, col2, col3 = st.columns(3)
@@ -55,7 +58,6 @@ if upload_file is not None:
                 with col3:
                     st.image(response2, width=200)
 
-                #st.image([response, response1, response2],width=200)
                 st.markdown("Right click on an image to download it")  
         except Exception as e:
             print(e)    
