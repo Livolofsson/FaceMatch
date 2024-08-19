@@ -1,8 +1,0 @@
-banan.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\banan.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-Slakttrad-for-barn.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\Slakttrad-for-barn.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-banan.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\banan.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-Slakttrad-for-barn.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\Slakttrad-for-barn.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-banan.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\banan.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-Slakttrad-for-barn.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\Slakttrad-for-barn.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-banan.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\banan.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
-Slakttrad-for-barn.jpg, Face could not be detected in C:\Users\astri\summer24\FaceMatch\test_bilder\Slakttrad-for-barn.jpg.Please confirm that the picture is a face photo or consider to set enforce_detection param to False.
