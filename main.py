@@ -39,25 +39,41 @@ if upload_file is not None:
             represent = DeepFace.represent(img,model_name="Facenet", enforce_detection=False)
             dicti = represent[0]
             result = dicti.get("embedding")
-            
+
             similar_images = images.query(data=result, limit=3, include_metadata=True, include_value=True)
-            tuple_0 = similar_images[0]
-            tuple_1 = similar_images[1]
-            tuple_2 = similar_images[2]
-            response = tuple_0[2].get("image_url")
-            response1 = tuple_1[2].get("image_url")
-            response2 = tuple_2[2].get("image_url")
+            signed_urls = []
+            for sim_image in similar_images:
+                file_path = sim_image[2].get("image_path")
+                res = supabase.storage.from_("images").create_signed_url(file_path, expires_in=60)
+                signed_urls.append(res["signedURL"])
+
+            if len(signed_urls) != 0:
+                    col1, col2, col3 = st.columns(3)
+                    with col1:
+                        st.image(signed_urls[0], width=200)
+                    with col2:
+                        st.image(signed_urls[1], width=200)
+                    with col3:
+                        st.image(signed_urls[2], width=200)
+
+
+            # tuple_0 = similar_images[0]
+            # tuple_1 = similar_images[1]
+            # tuple_2 = similar_images[2]
+            # response = tuple_0[2].get("image_url")
+            # response1 = tuple_1[2].get("image_url")
+            # response2 = tuple_2[2].get("image_url")
         
-            if response and response1 and response2:
-                col1, col2, col3 = st.columns(3)
+            # if response and response1 and response2:
+            #     col1, col2, col3 = st.columns(3)
 
-                with col1:
-                    st.image(response, width=200)
-                with col2:
-                    st.image(response1, width=200)
-                with col3:
-                    st.image(response2, width=200)
+            #     with col1:
+            #         st.image(response, width=200)
+            #     with col2:
+            #         st.image(response1, width=200)
+            #     with col3:
+            #         st.image(response2, width=200)
 
-                st.markdown("Right click on an image to download it")  
+                    st.markdown("Right click on an image to download it")  
         except Exception as e:
-            print(e)    
+            st.error(f"An error occurred: {e}")    
