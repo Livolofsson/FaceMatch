@@ -3,6 +3,7 @@ from supabase import create_client
 from dotenv import load_dotenv
 import vecs 
 from deepface import DeepFace
+import sys
 load_dotenv()
 
 url = os.getenv("SUPABASE_URL")
@@ -56,6 +57,6 @@ def extract_and_store_feature(image_path: str):
     records = [(f"{filename}_{i}", embedding ,{"image_path": filename}) for i, embedding in enumerate(embeddings)]
     images.upsert(records)
 
-upload("C:\\Users\\astri\\Downloads\\SBL\\SBL\\sbl-bilder")
+upload(sys.argv[1])
 images.create_index()
 vx.disconnect()

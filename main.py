@@ -55,25 +55,6 @@ if upload_file is not None:
                         st.image(signed_urls[1], width=200)
                     with col3:
                         st.image(signed_urls[2], width=200)
-
-
-            # tuple_0 = similar_images[0]
-            # tuple_1 = similar_images[1]
-            # tuple_2 = similar_images[2]
-            # response = tuple_0[2].get("image_url")
-            # response1 = tuple_1[2].get("image_url")
-            # response2 = tuple_2[2].get("image_url")
-        
-            # if response and response1 and response2:
-            #     col1, col2, col3 = st.columns(3)
-
-            #     with col1:
-            #         st.image(response, width=200)
-            #     with col2:
-            #         st.image(response1, width=200)
-            #     with col3:
-            #         st.image(response2, width=200)
-
                     st.markdown("Right click on an image to download it")  
         except Exception as e:
             st.error(f"An error occurred: {e}")    
