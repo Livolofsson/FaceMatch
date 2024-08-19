@@ -27,7 +27,6 @@ Add the same environment you added in .env as secrets in Streamlit
 
 ## Local development
 
-**1. Start Streamlit app**
 ```bash
 python -m streamlit run main.py
 ```
