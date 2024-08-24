@@ -31,12 +31,17 @@ def load_image(img):
 upload_file = st.file_uploader(label="Upload image", type=['jpg', 'png', 'webp'])
 
 if upload_file is not None:
+    # TODO: Use black and white image when extracting feature vector for beter result
+    # TODO: Use yolov8 for face detection for input image
     img = load_image(upload_file)
     st.image(img)
 
     with st.spinner("Finding matches..."):
         try:
-            represent = DeepFace.represent(img,model_name="Facenet", enforce_detection=False)
+            represent = DeepFace.represent(
+                img, 
+                model_name="Facenet", 
+                enforce_detection=False)
             dicti = represent[0]
             result = dicti.get("embedding")
 

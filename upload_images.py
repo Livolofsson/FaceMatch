@@ -51,7 +51,7 @@ def extract_and_store_feature(image_path: str):
         image_path, 
         model_name="Facenet", 
         detector_backend="yolov8", 
-        enforce_detection=True
+        enforce_detection=False
     )
     embeddings = [feature_vector["embedding"] for feature_vector in feature_vectors]
     records = [(f"{filename}_{i}", embedding ,{"image_path": filename}) for i, embedding in enumerate(embeddings)]

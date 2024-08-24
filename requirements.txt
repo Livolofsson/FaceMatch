@@ -6,3 +6,4 @@ vecs==0.4.3
 opencv-python==4.9.0.80
 tensorflow==2.16.1
 tf_keras==2.16.0
+ultralytics==8.2.79
